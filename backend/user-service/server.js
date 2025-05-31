@@ -1,7 +1,8 @@
-const express = require("express");
-const axios = require("axios");
-const mongoose = require("mongoose");
-const cors = require("cors");  // Importa o CORS
+import express from 'express'
+import axios from 'axios'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import { connectDB } from '../database/connection.js'
 
 const app = express();
 
@@ -11,10 +12,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 // Conexão com MongoDB Atlas
-const mongoUri = "mongodb+srv://guilhermedravanete0:123@Mudar@cluster0.xjznhg7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB conectado no User-Service"))
-  .catch(err => console.log("Erro ao conectar no MongoDB", err));
+await connectDB() 
 
 // Definição do schema do usuário
 const userSchema = new mongoose.Schema({
@@ -35,8 +33,8 @@ app.post("/usuarios", async (req, res) => {
     const novoUser = new User(usuario);
     await novoUser.save();
 
-    // Notifica o order-service com dados do pedido
-    res.send({ message: "Usuário cadastrado!", usuario: novoUser });
+    // Notifica o user-service com dados do usuário
+    res.status(201).send({ message: 'Usuário cadastrado'});
   } catch (error) {
     res.status(500).send({ error: "Erro ao cadastrar usuário" });
   }
@@ -46,7 +44,6 @@ app.post("/usuarios", async (req, res) => {
 app.get("/usuarios", async (req, res) => {
   try {
     const usuarios = await User.find();
-    console.log("Usuários cadastrados:", usuarios); // Exibe no console
     res.send(usuarios);
   } catch (error) {
     res.status(500).send({ error: "Erro ao buscar usuários" });
@@ -64,7 +61,7 @@ app.put("/usuarios/:id", async (req, res) => {
     if (!usuarioAtualizado) {
       return res.status(404).send({ error: "Usuário não encontrado" });
     }
-    res.send({ message: "Usuário atualizado", usuario: usuarioAtualizado });
+    res.send({ message: "Usuário atualizado" });
   } catch (error) {
     res.status(500).send({ error: "Erro ao atualizar usuário" });
   }

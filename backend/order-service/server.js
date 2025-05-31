@@ -1,6 +1,8 @@
-const express = require("express");
-const mongoose = require("mongoose");
-const cors = require("cors");  // Importa o CORS
+import express from 'express'
+import axios from 'axios'
+import mongoose from 'mongoose'
+import cors from 'cors'
+import { connectDB } from '../database/connection.js'
 
 const app = express();
 
@@ -11,11 +13,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 // Conexão com MongoDB Atlas
-const mongoUri = "mongodb+srv://guilhermedravanete0:123@Mudar@cluster0.xjznhg7.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
-
-mongoose.connect(mongoUri, { useNewUrlParser: true, useUnifiedTopology: true })
-  .then(() => console.log("MongoDB conectado no Order-Service"))
-  .catch(err => console.log("Erro ao conectar no MongoDB", err));
+await connectDB()
 
 // Schema para pedidos
 const orderSchema = new mongoose.Schema({
