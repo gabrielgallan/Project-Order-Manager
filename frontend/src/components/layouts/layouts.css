@@ -1,0 +1,27 @@
+.header {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 80px;
+    background: rgba(0, 0, 0, 0.171);
+    backdrop-filter: blur(100%);
+    color: #fff;
+    z-index: 1000;
+}
+
+.footer {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 60px;
+    background: rgba(0, 0, 0, 0.199);
+    backdrop-filter: blur(100%);
+    color: #ffffff8e;
+    display: grid;
+    place-content: center;
+    z-index: 1000;
+    font: italic 11pt Arial;
+}

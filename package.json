@@ -1,0 +1,25 @@
+{
+  "name": "a3",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "install:all": "concurrently \"cd backend && npm install\" \"cd frontend && npm install\"",
+    "dev": "concurrently \"npm --prefix backend run dev\" \"npm --prefix frontend run dev\""
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/GuilhermeDravanete/A3.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "type": "commonjs",
+  "bugs": {
+    "url": "https://github.com/GuilhermeDravanete/A3/issues"
+  },
+  "homepage": "https://github.com/GuilhermeDravanete/A3#readme",
+  "devDependencies": {
+    "concurrently": "^9.1.2"
+  }
+}
