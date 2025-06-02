@@ -1,8 +1,15 @@
 .loader-container {
-    display: flex;
-    height: 100vh;
-    justify-content: center;
-    align-items: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.welcome {
+  position: absolute;
+  top: 54%;
+  font: normal 11pt arial;
+  color: rgba(240, 248, 255, 0.719);
 }
 
 

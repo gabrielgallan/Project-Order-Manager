@@ -1,0 +1,28 @@
+.pedidos_container {
+    padding: 50px 70px;
+}
+
+.titulo {
+    color: black;
+    text-align: left;
+    font: bold 20pt Arial;
+}
+
+.pedidos_list {
+    width: 600px;
+    border: 2px solid rgba(0, 0, 0, 0);
+    max-height: 560px;    /* Defina a altura máxima desejada */
+    overflow-y: auto;     /* Habilita o scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;            /* Espaço entre os cards, opcional */
+    padding-right: 0px;   /* Espaço para a barra de rolagem, opcional */
+}
+
+.pedido_card {
+    width: 550px;
+    height: 150px;
+    background-color: rgb(255, 255, 255);
+    border-radius: 10px;
+    flex-shrink: 0;
+}

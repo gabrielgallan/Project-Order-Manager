@@ -5,42 +5,91 @@
     align-items: center;
 }
 
-.dash {
-    width: 1040px;
+.dash_box {
+    width: 1080px;
     height: 740px;
     background: rgba(0, 0, 0, 0.438);
     box-shadow: 0 15px 25px rgba(0, 0, 0, 0.582);
     border-radius: 10px;
     display: flex;
+    justify-content: right;
+}
+
+.dash_content {
+    width: 900px;
+    height: 740px;
+    background-color: #e9e9eb;
+    border-radius: 60px 10px 10px 60px;
 }
 
 .navbar {
     display: flex;
     flex-direction: column;
-    gap: 3rem;
+    gap: 2rem;
+    width: 180px;
+    box-sizing: border-box;
+    padding-top: 5%;
+    padding-left: 2%;
     border: 2px solid rgba(255, 255, 255, 0);
-    padding: 12rem 35px;
 }
-.navbar a, .navbar button {
-    color: #fff;
+
+.navbar a{                  /*Textos dos elementos*/
+    display: flex;         /* Faz o link envolver imagem e texto juntos */
+    align-items: center;
+    gap: 0.8rem;
+    color: #ffffff5e;
     text-decoration: none;
     background: none;
-    border: none;
     cursor: pointer;
-    font: normal 15pt arial;
-    justify-content: left;
+    font: normal 12pt;
+    font-family: Arial, sans-serif;
 }
 
-.navbar button {
+img {  /*icones*/
+    width: 22px;
+    height: 22px;
+    opacity: 50%;
+}
+
+.logout{ /*botão de logout*/
+    margin-top: 210%;
+    display: flex;
+    align-items: center;
+    border: 2px solid rgba(255, 255, 255, 0);
+    gap: 0.7rem;
+}
+
+.nav-active, .nav-active img {  /*Icones ativos*/
+    color: white !important;
+    opacity: 100%;
+}
+
+.dados_user {
+    margin-bottom: 40%;
     padding: 0;
-    text-align: left;
+    display: flex;
+    border: 2px solid rgba(255, 255, 255, 0);
+    align-items: center;
 }
 
-.dash_content {
-    width: 850px;
-    height: 700px;
-    background-color: aliceblue;
-    border-radius: 5px;
-    margin-top: 20px;
-    margin-right: 20px;
+.dados_user img {
+    width: 40px;
+    height: 40px;
+    opacity: 100%;
+    margin-right: 10%;
 }
+
+.dados p {
+    padding: 0;
+    margin: 0;
+}
+
+p.nome {
+    font: bold 15pt arial;
+}
+
+p.cargo {
+    font: normal 9pt arial;
+    color: #ffffff9d;
+}
+

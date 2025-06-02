@@ -16,11 +16,11 @@ export async function autenticateUser(email, password) {
                 if(response.ok) {
                     const data = await response.json()
 
-                    const searchEmail = data.usuarios.find(user => user.email===form.email)
+                    const user = data.usuarios.find(user => user.email===form.email)
 
-                    if (searchEmail) {
-                        if ( searchEmail.password === form.password ) {
-                            return { status: true, message: 'Autenticado' }
+                    if (user) {
+                        if ( user.password === form.password ) {
+                            return { status: true, message: 'Autenticado', name: user.name}
                         } else {
                             return { status: false, message: 'Senha inválida' }
                         }
