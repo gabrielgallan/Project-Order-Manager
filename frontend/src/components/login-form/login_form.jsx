@@ -1,4 +1,5 @@
 import React, { useState, useRef } from 'react'
+import { useNavigate } from 'react-router-dom'
 import { autenticateUser } from './autenticar.js'
 import './login-form.css'
 
@@ -7,12 +8,13 @@ function LoginForm({setLoading, setIsAuth, setUserName}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const res = useRef()
+    const navigate = useNavigate()
 
 // => Função que envia o formulário e valida o usuário
     async function handleSubmit(e) {
         e.preventDefault()
 
-        const reply = /*{status:true, message:'Autenticado', name: 'Gabriel'}*/ await autenticateUser(email, password)
+        const reply = /*{status:true, message:'Autenticado', name: 'João'}*/ await autenticateUser(email, password)
 
         if (reply.status) {
             setUserName(reply.name)
@@ -20,6 +22,7 @@ function LoginForm({setLoading, setIsAuth, setUserName}) {
             setTimeout(() => {
                 setLoading(false)
                 setIsAuth(true)
+                navigate("/dashboard/pedidos"); //Redireciona para o Dashboard
             }, 1000)
         
         } else {

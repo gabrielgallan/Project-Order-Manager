@@ -9,7 +9,7 @@ function Dashboard({setIsAuth, userName}) {
             <div className="dash_box">
                     <nav className="navbar">
                         <div className="dados_user">
-                            <img src="/icons/usuarios.png" alt=""/>
+                            <img src="/icons/account.png" alt=""/>
                             <div className="dados">
                                 <p className="nome">{userName}</p>
                                 <p className="cargo">Adminitrador</p>
@@ -43,7 +43,7 @@ function Dashboard({setIsAuth, userName}) {
                         <Route path="pedidos" element={<Pedidos />} />
                         
                         {/* Rota padrão (opcional) */}
-                        <Route path="*" element={<div>Bem-vindo ao Dashboard!</div>} />
+                        <Route path="*" element={<div>DashBoard</div>} />
                     </Routes>
                 </div>
 

@@ -1,0 +1,127 @@
+.pedido-card {
+    width: 550px;
+    height: 150px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    padding: 15px;
+    box-shadow: 0 0px 10px rgba(0, 0, 0, 0.08);
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    font-family: Arial;
+}
+
+.pedido-info {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: flex-start;
+    height: 100%;
+}
+
+.pedido-esquerda {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    height: 100%;
+    padding-right: 15px;
+}
+
+.pedido-esquerda div {
+    margin-bottom: 2px;
+}
+
+.pedido-esquerda div:last-child {
+    margin-bottom: 0;
+}
+
+.pedido-info strong {     /* Todos os titulos em negrito */
+    font: bold 11pt Arial;
+    color: rgb(0, 0, 0);
+}
+
+.id strong {
+    font: bold 15pt Arial;
+    color: #000000;
+}
+
+.id span {
+    font-family: arial;
+    color: #3912e4;
+}
+
+.produto {
+    margin-left: 5px;
+    font: normal 11pt monospace;
+}
+
+.pedido-detalhes {
+    list-style: none;
+    padding-left: 10px;
+    margin: 0px;
+    font-size: 0.85em;
+    color: #424242;
+}
+
+.pagamento {
+    margin-left: 5px;
+    font: normal 11pt arial;
+}
+
+.pedido-meio {
+    font-size: 11pt;
+    color: black;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    height: 100%;
+    padding-right: 15px;
+    border-left: 1px solid #eee;
+    padding-left: 15px;
+}
+
+.pedido-direita {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    justify-content: space-between;
+    height: 100%;
+    padding-left: 15px;
+}
+
+.pedido-acoes {
+    display: flex;
+}
+
+.pedido-acoes button {
+    background: none;
+    border: none;
+    padding: 0 2px;
+    cursor: pointer;
+    transition: transform 0.2s ease;
+}
+
+button svg {
+    width: 27px;
+    height: 27px;
+}
+
+.pedido-acoes button:hover {
+    transform: scale(1.1);
+}
+
+.pedido-preco svg {
+    width: 23px;
+    height: 23px;   
+}
+
+.pedido-preco {
+    font-size: 15pt;
+    font-weight: bold;
+    color: #348f4f;
+    display: flex;
+    align-items: end;
+}

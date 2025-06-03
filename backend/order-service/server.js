@@ -37,8 +37,7 @@ app.post("/pedidos", async (req, res) => {
     const novoPedido = new Order(pedido);
     await novoPedido.save();
 
-    console.log("Pedido recebido:", novoPedido);
-    res.send({ message: "Pedido processado!", pedido: novoPedido });
+    res.send({ message: "Pedido processado!"});
   } catch (error) {
     res.status(500).send({ error: "Erro ao processar pedido" });
   }
@@ -48,7 +47,6 @@ app.post("/pedidos", async (req, res) => {
 app.get("/pedidos", async (req, res) => {
   try {
     const pedidos = await Order.find();
-    console.log("Pedidos cadastrados:", pedidos); // Exibe no console
     res.send(pedidos);
   } catch (error) {
     res.status(500).send({ error: "Erro ao buscar pedidos" });

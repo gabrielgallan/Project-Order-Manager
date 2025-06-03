@@ -37,18 +37,21 @@
     display: flex;         /* Faz o link envolver imagem e texto juntos */
     align-items: center;
     gap: 0.8rem;
-    color: #ffffff5e;
+    color: #ffffff73;
     text-decoration: none;
     background: none;
     cursor: pointer;
     font: normal 12pt;
     font-family: Arial, sans-serif;
+    transition: color .5s;
+    border: 1px solid rgba(255, 255, 255, 0);
 }
 
 img {  /*icones*/
     width: 22px;
     height: 22px;
     opacity: 50%;
+    transition: opacity .5s;
 }
 
 .logout{ /*botão de logout*/
