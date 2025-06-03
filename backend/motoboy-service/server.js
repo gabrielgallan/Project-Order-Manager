@@ -19,6 +19,7 @@ const motoboySchema = new mongoose.Schema({
   cpf: String,
   telefone: String,
   placaMoto: String,
+  CNH: String,
 });
 
 const Motoboy = mongoose.model("Motoboy", motoboySchema);
