@@ -13,7 +13,7 @@ app.use(cors({ origin: "http://localhost:3000" }));
 app.use(express.json());
 
 // Conexão com MongoDB Atlas
-await connectDB()
+await connectDB() 
 
 // Schema para pedidos
 const orderSchema = new mongoose.Schema({

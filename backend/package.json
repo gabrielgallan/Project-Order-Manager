@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "dev": "concurrently \"node ./user-service/server.js\" \"node ./order-service/server.js\""
+    "dev": "concurrently \"node ./user-service/server.js\" \"node ./order-service/server.js\" \"node ./motoboy-service/server.js\""
   },
   "keywords": [],
   "author": "",
