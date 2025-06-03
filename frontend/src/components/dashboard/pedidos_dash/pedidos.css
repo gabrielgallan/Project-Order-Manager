@@ -3,7 +3,7 @@
 }
 
 .titulo {
-    color: black;
+    color: rgb(0, 0, 0);
     text-align: left;
     font: bold 20pt Arial;
     margin-bottom: 3%;
@@ -20,17 +20,32 @@
     flex-direction: column;
     gap: 2rem;            /* Espaço entre os cards, opcional */
     padding-right: 0px;   /* Espaço para a barra de rolagem, opcional */
+    height: 540px;
 }
 
+/*  Button Registrar  */
+
 button.registrar {
-    padding: 8px 10px;
-    border: none;
-    background-color: rgb(68, 38, 206);
-    color: white;
-    font: bold 12pt arial;
-    border-radius: 5px;
-    margin-bottom: 4%;
+  width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  background-color: rgb(51, 12, 192);
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(118, 113, 136, 0.253);
+  cursor: pointer;
+  transition: all 0.3s;
+  overflow: hidden;
+  position: relative;
+  margin-bottom: 3%;
 }
+
+button.registrar:hover {
+    transform: scale(1.1);
+}
+
 
 /*   Formulário de Novo Pedido   */
 
@@ -101,19 +116,28 @@ button.registrar {
 }
 
 .enviar_pedido button {
-    border: none;
-    background-color: transparent;
-    border-radius: 2px;
-    padding: 5px 10px;
-    color: rgb(68, 38, 206);
-    font: bold 11pt arial;
-    transition: .2s;
+    width: 35px;
+  height: 35px;
+  border-radius: 50px;
+  background-color: transparent;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0px 0px 0px 4px rgba(68, 63, 83, 0);
+  cursor: pointer;
+  transition: all 0.5s ease;
+  overflow: hidden;
+  position: relative;
 }
 
-.enviar_pedido button:hover {
-    background-color: rgb(68, 38, 206);
-    color: white;
-    box-shadow: 0 0 10px rgba(44, 10, 199, 0.315);
+.enviar_pedido button svg {
+    fill: rgba(0, 0, 0, 0.575);
+}
+
+.enviar_pedido button svg:hover {
+    fill: rgb(51, 12, 192);
+    transform: scale(1.1);
 }
 
 .input_pedidos option {
