@@ -19,6 +19,7 @@ await connectDB()
 const orderSchema = new mongoose.Schema({
   orderID: String,
   produto: String,
+  itens: [String],
   quantidade: Number,
   clientName: String,
   deliveryMan: String,

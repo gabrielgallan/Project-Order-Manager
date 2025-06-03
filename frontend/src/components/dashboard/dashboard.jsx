@@ -2,6 +2,7 @@ import React, { useState, useRef } from "react";
 import { Link, Routes, Route, NavLink } from "react-router-dom";
 import './dashboard.css'
 import Pedidos from "./pedidos_dash/pedidos.jsx";
+import Usuarios from "./usuarios_dash/usuarios.jsx";
 
 function Dashboard({setIsAuth, userName}) {
     return (
@@ -41,6 +42,8 @@ function Dashboard({setIsAuth, userName}) {
                 <div className="dash_content">
                     <Routes>
                         <Route path="pedidos" element={<Pedidos />} />
+                        <Route path="usuarios" element={<Usuarios />} />
+                        <Route path="delivery" element={<Pedidos />} />
                         
                         {/* Rota padrão (opcional) */}
                         <Route path="*" element={<div>DashBoard</div>} />

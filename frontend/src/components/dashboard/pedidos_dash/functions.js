@@ -9,7 +9,8 @@ export async function getOrders() {
             return {
                 _id:order._id,
                 id:order.orderID, 
-                produto: order.produto, 
+                produto: order.produto,
+                itens: order.itens, 
                 quantidade: order.quantidade, 
                 cliente: order.clientName, 
                 deliveryMan: order.deliveryMan, 
@@ -25,20 +26,19 @@ export async function getOrders() {
 }
 
 export async function formatOrder(order) {
-    const orders = await getOrders()
-    const newID = `0${String(orders.length+1)}`
-
-
+    const id = await generateID()
+    
     const pedidoFormatado = {
-        orderID: newID,
-        produto: order.produto,
+        orderID: id,
+        produto: order.produto.nome,
+        itens: order.produto.itens,
         quantidade: Number(order.quantidade),
         clientName: order.cliente,
         deliveryMan: order.entregador,
         paymentoForm: order.pagamento,
-        price: order.preco
+        price: order.produto.preco
     }
-
+    console.log(pedidoFormatado)
     return pedidoFormatado
 }
 
@@ -60,7 +60,7 @@ export async function postOrder(order) {
 
 export async function deleteOrder(id) {
     const orders = await getOrders()
-    const searchOrder = orders.find(order => order.id===id)
+    const searchOrder = orders.find(order => order._id===id)
     
     const key = searchOrder._id
     
@@ -74,4 +74,20 @@ export async function deleteOrder(id) {
            }
     }
      
+}
+
+export async function generateID() {
+    const response = await fetch('http://localhost:4000/pedidos')
+
+    if (response.ok) {
+        const data = await response.json()
+        const newID = data.length < 1 ? 1 : data.map((order) => {
+            return Number(order.orderID)
+        }).reduce((acc, atual) => acc > atual ? acc : atual) + 1
+
+
+        return String(newID).padStart(3, '0'); 
+    } else {
+        return 'Bad Request'
+    }
 }

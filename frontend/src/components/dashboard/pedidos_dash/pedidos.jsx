@@ -34,8 +34,14 @@ export default function Pedidos() {
 
     return (
         <div className="pedidos_container">
-            <h2 className="titulo">Pedidos</h2>
-            <button onClick={() => setShowForm(true)} className="registrar"><svg className="svgIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg></button>
+            <div className="titulo_row">
+                <h2 className="titulo">Gerenciamento de Pedidos</h2>
+                <button onClick={() => setShowForm(true)} className="registrar">
+                    <svg className="svgIcon" xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#ffffff"><path d="M440-440H200v-80h240v-240h80v240h240v80H520v240h-80v-240Z"/></svg>
+                </button>
+            </div>
+            
+            
             {showForm ? (
                 <PedidoForm onClose={handleCloseForm}/>
             ) : (

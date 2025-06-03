@@ -1,0 +1,33 @@
+.usuarios_container {
+    padding: 50px 70px;
+}
+
+.list_box {
+    width: 600px;
+}
+
+.list_box header {
+    width: 100%;
+    height: 3em;
+    background-color: rgba(23, 9, 56, 0.945);
+    border: 1px solid rgba(23, 9, 56, 0.945);
+    border-radius: 5px 5px 0px 0px;
+}
+
+.user_list {
+    width: 100%;
+    border: 2px solid rgba(0, 0, 0, 0.829);
+    max-height: 540px;    /* Defina a altura máxima desejada */
+    overflow-y: auto;     /* Habilita o scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 0;            /* Espaço entre os cards, opcional */
+    padding-right: 0px;   /* Espaço para a barra de rolagem, opcional */
+}
+
+.user_card {
+    width: 100%;
+    height: 2.5em;
+    background-color: rgb(255, 255, 255);
+    border: 1px solid rgba(212, 212, 212, 0.945);
+}

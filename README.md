@@ -1,13 +1,13 @@
 # Aplicação A3 (Gerenciamento de Pedidos)
 
 **SERVIÇOS**
-[ ] - Gerenciamento de pedidos com CRUD completo
-       - Listar pedidos
-       - Lançar pedido
-       - Deletar pedido
-       - Editar pedido
-[ ] - Gerenciamento de usuários para acesso ao sistema
-[ ] - Gerenciamento de entregadores
+- [ ] - Gerenciamento de pedidos com CRUD completo
+-       - Listar pedidos
+-       - Lançar pedido
+-       - Deletar pedido
+-       - Editar pedido
+- [ ] - Gerenciamento de usuários para acesso ao sistema
+- [ ] - Gerenciamento de entregadores
 
 **COMANDOS**
 - Na pasta A3

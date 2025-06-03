@@ -1,6 +1,8 @@
 .pedido-card {
     width: 550px;
     height: 150px;
+    min-width: 550px;
+    min-height: 150px;
     background-color: #ffffff;
     border-radius: 10px;
     padding: 15px;
@@ -23,7 +25,7 @@
     flex: 2;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    justify-content: top;
     height: 100%;
     padding-right: 15px;
 }
@@ -42,12 +44,13 @@
 }
 
 .id strong {
-    font: bold 15pt Arial;
+    font: bold 15pt monospace;
     color: #000000;
 }
 
 .id span {
-    font-family: arial;
+    font-family: monospace;
+    font-weight:bold;
     color: #3912e4;
 }
 
@@ -58,14 +61,15 @@
 
 .pedido-detalhes {
     list-style: none;
-    padding-left: 10px;
+    padding-left: 12px;
     margin: 0px;
-    font-size: 0.85em;
+    font-size: 0.75em;
     color: #424242;
 }
 
 .pagamento {
     margin-left: 5px;
+    margin-top: auto;
     font: normal 11pt arial;
 }
 
@@ -104,9 +108,14 @@
     transition: transform 0.2s ease;
 }
 
-button svg {
-    width: 27px;
-    height: 27px;
+button.btn-excluir svg {
+    width: 23px;
+    fill: rgb(231, 77, 77);
+}
+
+button.btn-editar svg {
+    width: 23px;
+    fill: rgb(66, 66, 66);
 }
 
 .pedido-acoes button:hover {
@@ -115,13 +124,13 @@ button svg {
 
 .pedido-preco svg {
     width: 23px;
-    height: 23px;   
+    fill: #35353500;   
 }
 
 .pedido-preco {
     font-size: 15pt;
     font-weight: bold;
-    color: #348f4f;
+    color: #353535;
     display: flex;
     align-items: end;
 }

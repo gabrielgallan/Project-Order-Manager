@@ -1,6 +1,7 @@
 import './pedidos.css'
 import React, { useState, useEffect } from 'react'
 import { formatOrder, postOrder } from './functions.js';
+import { produtos } from './catalogo-produtos.js';
 
 
 function PedidoForm({ onClose }) {
@@ -23,7 +24,6 @@ function PedidoForm({ onClose }) {
             cliente,
             entregador,
             pagamento,
-            preco
         };
 
         const pedidoFormatado = await formatOrder(novoPedido)
@@ -39,11 +39,18 @@ function PedidoForm({ onClose }) {
             <div className="linha"></div>
             <form className="pedido_form" onSubmit={handleSubmit}>
                 <div className="input_pedidos">
-                    <select required value={produto} onChange={e => setProduto(e.target.value)}>
+                    <select
+                        required
+                        value={produto ? produtos.findIndex(p => p.nome === produto.nome) : ""}
+                        onChange={e => {
+                            const idx = e.target.value;
+                            setProduto(produtos[idx]);
+                        }}
+                        >
                         <option value=""></option>
-                        <option value="Combo 1">Combo 1</option>
-                        <option value="Combo 2">Combo 2</option>
-                        <option value="Combo 3">Combo 3</option>
+                        {produtos.map((prod, idx) => (
+                            <option key={idx} value={idx}>{prod.nome}</option>
+                        ))}
                     </select>
                     <label>Produto</label>
                 </div>
@@ -85,18 +92,7 @@ function PedidoForm({ onClose }) {
                     </select>
                     <label>Forma de Pagamento</label>
                 </div>
-                <div className="input_pedidos">
-                    <input 
-                        type="number"
-                        step="0.01"
-                        min="0"
-                        required
-                        autoComplete='off'
-                        value={preco}
-                        onChange={e => setPreco(e.target.value)}
-                    />
-                    <label>Preço</label>
-                </div>
+        
                 <div className="enviar_pedido">
                     <button type='submit'><svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#330C90"><path d="M120-160v-640l760 320-760 320Zm80-120 474-200-474-200v140l240 60-240 60v140Zm0 0v-400 400Z"/></svg></button>
                 </div>
