@@ -4,7 +4,7 @@ import { autenticateUser } from './autenticar.js'
 import './login-form.css'
 
 //Função que retorna o formulário de login, autenticação e loader
-function LoginForm({setLoading, setIsAuth, setUserName}) {
+function LoginForm({setLoading, setIsAuth, setUser}) {
     const [email, setEmail] = useState('')
     const [password, setPassword] = useState('')
     const res = useRef()
@@ -17,7 +17,7 @@ function LoginForm({setLoading, setIsAuth, setUserName}) {
         const reply = /*{status:true, message:'Autenticado', name: 'João'}*/ await autenticateUser(email, password)
 
         if (reply.status) {
-            setUserName(reply.name)
+            setUser(reply.user)
             setLoading(true)
             setTimeout(() => {
                 setLoading(false)

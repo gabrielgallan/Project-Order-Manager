@@ -3,8 +3,9 @@ import { Link, Routes, Route, NavLink } from "react-router-dom";
 import './dashboard.css'
 import Pedidos from "./pedidos_dash/pedidos.jsx";
 import Usuarios from "./usuarios_dash/usuarios.jsx";
+import { setUserStatus } from "../login-form/autenticar.js"
 
-function Dashboard({setIsAuth, userName}) {
+function Dashboard({setIsAuth, user}) {
     return (
         <div className="dash_container">
             <div className="dash_box">
@@ -12,7 +13,7 @@ function Dashboard({setIsAuth, userName}) {
                         <div className="dados_user">
                             <img src="/icons/account.png" alt=""/>
                             <div className="dados">
-                                <p className="nome">{userName}</p>
+                                <p className="nome">{user.name}</p>
                                 <p className="cargo">Adminitrador</p>
                             </div>
                         </div>
@@ -36,7 +37,14 @@ function Dashboard({setIsAuth, userName}) {
                         </div>
 
                         <div className="logout">
-                            <img src="/icons/sair.png" alt="" /><a className='sair' onClick={() => setIsAuth(false)}>Sair</a>
+                            <img src="/icons/sair.png" alt="" />
+                            <a className='sair' onClick={() => {
+                                    setUserStatus(user.id, false);
+                                    setIsAuth(false)
+                                }}
+                            >
+                                Sair
+                            </a>
                         </div>
                     </nav>
                 <div className="dash_content">

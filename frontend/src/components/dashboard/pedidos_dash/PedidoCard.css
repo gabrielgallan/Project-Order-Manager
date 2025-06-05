@@ -1,4 +1,5 @@
 .pedido-card {
+    all: unset;
     width: 550px;
     height: 150px;
     min-width: 550px;

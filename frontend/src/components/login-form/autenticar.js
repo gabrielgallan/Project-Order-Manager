@@ -20,7 +20,8 @@ export async function autenticateUser(email, password) {
 
                     if (user) {
                         if ( user.password === form.password ) {
-                            return { status: true, message: 'Autenticado', name: user.name}
+                            await setUserStatus(user.id, true)
+                            return { status: true, message: 'Autenticado', user}
                         } else {
                             return { status: false, message: 'Senha inválida' }
                         }
@@ -38,3 +39,11 @@ export async function autenticateUser(email, password) {
                 return { status: false, message:'Formato do email ou senha inválidos' }
             }
     }
+
+export async function setUserStatus(id, status) {
+    await fetch(`http://localhost:3002/usuarios/${id}`, {
+        method: 'PUT',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ status })
+    });
+}

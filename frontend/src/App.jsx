@@ -10,18 +10,19 @@ function App() {
     const [loading, setLoading] = useState(false)
     const [isAuth, setIsAuth] = useState(false)
     const [userName, setUserName] = useState('')
+    const [user, setUser] = useState({})
 
     return (
         <BrowserRouter>
             <Layouts>
                 {loading ? (
-                    <Loader userName={userName}/>
+                    <Loader user={user}/>
                 ) : isAuth ? (
                     <Routes>
-                        <Route path="/dashboard/*" element={<Dashboard setIsAuth={setIsAuth} userName={userName} />} />
+                        <Route path="/dashboard/*" element={<Dashboard setIsAuth={setIsAuth} user={user}/>} />
                     </Routes>
                 ) : (
-                    <LoginForm setLoading={setLoading} setIsAuth={setIsAuth} setUserName={setUserName}/>
+                    <LoginForm setLoading={setLoading} setIsAuth={setIsAuth} setUser={setUser}/>
                 )}
             </Layouts>
         </BrowserRouter>
