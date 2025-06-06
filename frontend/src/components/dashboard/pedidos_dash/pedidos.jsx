@@ -17,6 +17,12 @@ export default function Pedidos() {
 
     useEffect(() => {
         fetchPedidos();
+
+        const intervalOrders = setInterval(() => {
+            fetchPedidos()
+        }, 5000)
+
+        return () => clearInterval(intervalOrders)
     }, []);
 
     // Função chamada ao fechar o form
@@ -27,7 +33,7 @@ export default function Pedidos() {
 
     async function handleDeletePedido(id) {
         const res = await deleteOrder(id)
-        console.log(res.message)
+        alert(res.message)
 
         fetchPedidos()
     }
@@ -46,9 +52,11 @@ export default function Pedidos() {
                 <PedidoForm onClose={handleCloseForm}/>
             ) : (
                 <div className="pedidos_list">
-                    {pedidos.map(pedido => (
+                    { pedidos.length === 0 ? (
+                        <p className="sem_pedidos">Nenhum pedido encontrado</p> ) :
+                    ( pedidos.map(pedido => (
                         <PedidoCard key={pedido._id} pedido={pedido} onDelete={handleDeletePedido}/>
-                    ))}
+                    )))}
                 </div>
             )}
         </div>

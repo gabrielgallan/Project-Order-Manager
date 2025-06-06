@@ -1,5 +1,7 @@
 import { z } from 'zod'
 
+
+//Valida o formato do formulário e autentica o usuário
 export async function autenticateUser(email, password) {
 
             const credentials_schema = z.object({
@@ -11,7 +13,7 @@ export async function autenticateUser(email, password) {
             const result = credentials_schema.safeParse(form)
 
             if (result.success) {
-                const response = await fetch('http://localhost:3002/usuarios')
+                const response = await fetch(`http://localhost:3002/usuarios`)
     
                 if(response.ok) {
                     const data = await response.json()
@@ -19,12 +21,17 @@ export async function autenticateUser(email, password) {
                     const user = data.usuarios.find(user => user.email===form.email)
 
                     if (user) {
-                        if ( user.password === form.password ) {
-                            await setUserStatus(user.id, true)
-                            return { status: true, message: 'Autenticado', user}
+                        if (!user.status) {
+                            if ( user.password === form.password ) {
+                                await setUserStatus(user.id, true)
+                                return { status: true, message: 'Autenticado', user}
+                            } else {
+                                return { status: false, message: 'Senha inválida' }
+                            }
                         } else {
-                            return { status: false, message: 'Senha inválida' }
+                            return { status: false, message: 'Este usuário já está logado' }
                         }
+                         
 
                     } else {
                         return { status: false, message: 'Usuário não encontrado' }
@@ -40,6 +47,8 @@ export async function autenticateUser(email, password) {
             }
     }
 
+
+//Defini o status do user
 export async function setUserStatus(id, status) {
     await fetch(`http://localhost:3002/usuarios/${id}`, {
         method: 'PUT',

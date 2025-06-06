@@ -20,6 +20,14 @@
     font-family: 'Nunito', Arial, sans-serif;
 }
 
+.sem_pedidos {
+    text-align: center;
+    color: #00000077;
+    font-family: 'Nunito';
+    font-size: 12pt;
+    font-style: italic;
+}
+
 /*   Lista de Pedidos   */
 
 .pedidos_list {

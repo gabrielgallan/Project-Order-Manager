@@ -1,6 +1,6 @@
 import './pedidos.css'
-import React, { useState, useEffect } from 'react'
-import { formatOrder, postOrder } from './functions.js';
+import { useState } from 'react'
+import { formatedOrder, postOrder } from './functions.js';
 import { produtos } from './catalogo-produtos.js';
 
 
@@ -26,7 +26,7 @@ function PedidoForm({ onClose }) {
             pagamento,
         };
 
-        const pedidoFormatado = await formatOrder(novoPedido)
+        const pedidoFormatado = await formatedOrder(novoPedido)
         const res = await postOrder(pedidoFormatado)
 
         console.log(res.message)

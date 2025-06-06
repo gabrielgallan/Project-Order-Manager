@@ -6,6 +6,7 @@ import { connectDB } from '../database/connection.js';
 const app = express();
 
 // Habilita CORS para o frontend
+
 app.use(cors({ origin: "http://localhost:3000" }));
 
 app.use(express.json());
@@ -77,4 +78,4 @@ app.delete("/motoboys/:id", async (req, res) => {
   }
 });
 
-app.listen(5000, () => console.log("Motoboy-Service rodando na porta 5000"));
+app.listen(5000 ,() => console.log("Motoboy-Service rodando na porta 5000"));

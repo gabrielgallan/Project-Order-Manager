@@ -25,8 +25,9 @@ export async function getOrders() {
     }
 }
 
-export async function formatOrder(order) {
+export async function formatedOrder(order) {
     const id = await generateID()
+    const price = (parseFloat(order.produto.preco) * parseFloat(order.quantidade)).toFixed(2)
     
     const pedidoFormatado = {
         orderID: id,
@@ -36,7 +37,7 @@ export async function formatOrder(order) {
         clientName: order.cliente,
         deliveryMan: order.entregador,
         paymentoForm: order.pagamento,
-        price: order.produto.preco
+        price
     }
     console.log(pedidoFormatado)
     return pedidoFormatado
@@ -66,12 +67,20 @@ export async function deleteOrder(id) {
     
     
     if (key) {
-        const response = await fetch(`http://localhost:4000/pedidos/${key}`, {method: 'DELETE'})
+        const confirm = window.confirm('Tem certeza que deseja deletar este pedido?')
+        if (confirm) {
+            const response = await fetch(`http://localhost:4000/pedidos/${key}`, {method: 'DELETE'})
             if (response.ok) {
                 return { message: 'Pedido deletado', status: true }
            } else {
                return { message: 'Erro ao deletar o pedido', status: false }
            }
+        } else {
+            return { message: 'Solicitação cancelada', status: false }
+        }
+        
+    } else {
+        return { message: 'Erro ao encontrar o pedido', status: false }
     }
      
 }

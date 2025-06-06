@@ -1,4 +1,3 @@
-import React, { useState, useRef } from "react";
 import { Link, Routes, Route, NavLink } from "react-router-dom";
 import './dashboard.css'
 import Pedidos from "./pedidos_dash/pedidos.jsx";
@@ -13,7 +12,7 @@ function Dashboard({setIsAuth, user}) {
                         <div className="dados_user">
                             <img src="/icons/account.png" alt=""/>
                             <div className="dados">
-                                <p className="nome">{user.name}</p>
+                                <p className="nome">{user.name.trim().split(" ")[0]}</p>
                                 <p className="cargo">Adminitrador</p>
                             </div>
                         </div>
@@ -39,8 +38,14 @@ function Dashboard({setIsAuth, user}) {
                         <div className="logout">
                             <img src="/icons/sair.png" alt="" />
                             <a className='sair' onClick={() => {
-                                    setUserStatus(user.id, false);
-                                    setIsAuth(false)
+                                    const confirm = window.confirm('Tem certeza que deseja sair da conta?')
+                                    if (confirm) {
+                                        setUserStatus(user.id, false);
+                                        setIsAuth(false) 
+                                    } else {
+                                        alert('Solicitação cancelada')
+                                    }
+                                    
                                 }}
                             >
                                 Sair

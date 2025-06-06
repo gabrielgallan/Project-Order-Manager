@@ -81,4 +81,4 @@ app.delete("/usuarios/:id", async (req, res) => {
   }
 });
 
-app.listen(3002, () => console.log("User-Service rodando na porta 3002"));
+app.listen(3002 ,() => console.log("User-Service rodando na porta 3002"));
