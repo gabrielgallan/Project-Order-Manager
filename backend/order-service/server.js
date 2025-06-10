@@ -18,8 +18,7 @@ await connectDB()
 // Schema para pedidos
 const orderSchema = new mongoose.Schema({
   orderID: String,
-  produto: String,
-  itens: [String],
+  produto: { nome: String, itens: [String], preco: String },
   quantidade: Number,
   clientName: String,
   deliveryMan: String,

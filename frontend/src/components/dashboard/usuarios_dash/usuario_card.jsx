@@ -4,7 +4,9 @@ export default function UsuarioCard({ user, onDelete }) {
     const formatedName = (name) => {
         const first = name.trim().split(' ')[0]
         const mid = name.trim().split(' ')[1]
-        return `${first} ${mid}`
+        return mid ? `${first} ${mid}` : `${first}`
+        
+        
     }
 
     return (

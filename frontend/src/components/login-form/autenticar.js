@@ -6,7 +6,7 @@ export async function autenticateUser(email, password) {
 
             const credentials_schema = z.object({
                 email: z.string().email(),
-                password: z.string().min(8)
+                password: z.string().min(6)
             })
 
             const form = { email, password }
@@ -29,7 +29,7 @@ export async function autenticateUser(email, password) {
                                 return { status: false, message: 'Senha inválida' }
                             }
                         } else {
-                            return { status: false, message: 'Este usuário já está logado' }
+                            return { status: true, message: 'Este usuário já está logado' }
                         }
                          
 

@@ -9,8 +9,7 @@ export async function getOrders() {
             return {
                 _id:order._id,
                 id:order.orderID, 
-                produto: order.produto,
-                itens: order.itens, 
+                produto: { nome:order.produto.nome, itens:order.produto.itens, preco: order.produto.preco }, 
                 quantidade: order.quantidade, 
                 cliente: order.clientName, 
                 deliveryMan: order.deliveryMan, 
@@ -31,8 +30,7 @@ export async function formatedOrder(order) {
     
     const pedidoFormatado = {
         orderID: id,
-        produto: order.produto.nome,
-        itens: order.produto.itens,
+        produto: { nome: order.produto.nome, itens: order.produto.itens, preco: order.produto.preco },
         quantidade: Number(order.quantidade),
         clientName: order.cliente,
         deliveryMan: order.entregador,
@@ -99,4 +97,37 @@ export async function generateID() {
     } else {
         return 'Bad Request'
     }
+}
+
+export async function formateEditedOrder(order) {
+    const newPrice = (Number(order.produto.preco) * Number(order.quantidade)).toFixed(2)
+
+    const body = {
+        produto: order.produto,
+        quantidade: Number(order.quantidade),
+        clientName: order.cliente,
+        deliveryMan: order.entregador,
+        paymentForm: order.pagamento,
+        price: newPrice
+    }
+
+    return {body, _id:order._id}
+}
+
+export async function putOrder(order) {
+    const req = await formateEditedOrder(order)
+    const response = await fetch(`http://localhost:4000/pedidos/${req._id}`, {
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(req.body)
+    })
+
+    if (response.ok) {
+        return { message: 'Pedido Atualizado', status: true }
+    } else {
+        return { message: 'Erro ao atualizar o pedido', status: true }
+    }
+    
 }

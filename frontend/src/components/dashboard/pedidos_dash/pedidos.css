@@ -68,7 +68,7 @@ button.registrar:hover {
 
 /*   Formulário de Novo Pedido   */
 
-.pedido_form_box {
+.pedido_form_box, .pedido_edit_box {
     width: 400px;
     box-sizing: border-box;
     padding: 20px;
@@ -77,7 +77,7 @@ button.registrar:hover {
     box-shadow: 10px 10px 20px rgba(0, 0, 0, 0.13);
 }
 
-.pedido_form_box h3 {
+.pedido_form_box h3, .pedido_edit_box h3 {
     margin: 0;
     margin-bottom: 10px;
     font: bold 14pt Arial;
