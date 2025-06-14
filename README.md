@@ -2,22 +2,22 @@
 
 ## SERVIÇOS
 - Gerenciamento de pedidos com CRUD completo
-[x] - Listar pedidos
-[x] - Lançar pedido
-[x] - Deletar pedido
-[x] - Editar pedido
+- [x] - Listar pedidos
+- [x] - Lançar pedido
+- [x] - Deletar pedido
+- [x] - Editar pedido
 
 - Gerenciamento de usuários para acesso ao sistema
-[x] - Listar usuários
-[x] - Cadastrar usuários
-[x] - Deletar usuários
-[ ] - Editar usuários
+- [x] - Listar usuários
+- [x] - Cadastrar usuários
+- [x] - Deletar usuários
+- [ ] - Editar usuários
 
 - Gerenciamento de entregadores
-[ ] - Listar entregadores
-[ ] - Cadastrar entregador
-[ ] - Deletar entregador
-[ ] - Editar entregador
+- [ ] - Listar entregadores
+- [ ] - Cadastrar entregador
+- [ ] - Deletar entregador
+- [ ] - Editar entregador
 
 ### COMANDOS
 **Na pasta A3**
