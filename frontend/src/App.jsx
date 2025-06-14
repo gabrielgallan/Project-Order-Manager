@@ -27,18 +27,18 @@ function App() {
 
     return (
         <BrowserRouter>
+        {loading ? (
+            <Loader user={user}/>
+        ) : isAuth ? (
+            <Routes>
+                <Route path="/dashboard/*" element={<Dashboard setIsAuth={setIsAuth} user={user}/>} />
+            </Routes>
+        ) : (
             <Layouts>
-                {loading ? (
-                    <Loader user={user}/>
-                ) : isAuth ? (
-                    <Routes>
-                        <Route path="/dashboard/*" element={<Dashboard setIsAuth={setIsAuth} user={user}/>} />
-                    </Routes>
-                ) : (
-                    <LoginForm setLoading={setLoading} setIsAuth={setIsAuth} setUser={setUser}/>
-                )}
+                <LoginForm setLoading={setLoading} setIsAuth={setIsAuth} setUser={setUser}/>
             </Layouts>
-        </BrowserRouter>
+        )}
+    </BrowserRouter>
     )
 }
 

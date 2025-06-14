@@ -4,7 +4,7 @@
 
 h2 {
     display: flex;
-    gap: 35%;
+    gap: 12em;
 }
 
 .usuarios_container button.addUser {

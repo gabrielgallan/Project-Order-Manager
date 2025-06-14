@@ -93,7 +93,7 @@ export async function generateID() {
         }).reduce((acc, atual) => acc > atual ? acc : atual) + 1
 
 
-        return String(newID).padStart(3, '0'); 
+        return String(newID).padStart(3, '0');
     } else {
         return 'Bad Request'
     }

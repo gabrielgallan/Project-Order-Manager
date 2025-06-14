@@ -98,7 +98,7 @@ function UserForm({ onClose }) {
             </div>
             
 
-            <button className={styles.submit}>Submit</button>
+            <button className={styles.submit}>CADASTRAR</button>
             <p className={styles.response} ref={reply}></p>
         </form>
      )

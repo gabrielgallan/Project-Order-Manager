@@ -13,34 +13,34 @@ export async function autenticateUser(email, password) {
             const result = credentials_schema.safeParse(form)
 
             if (result.success) {
-                const response = await fetch(`http://localhost:3002/usuarios`)
-    
-                if(response.ok) {
-                    const data = await response.json()
+                try {
+                    const response = await fetch(`http://localhost:3002/usuarios`)
+        
+                        if(response.ok) {
+                            const data = await response.json()
+                            const user = data.usuarios.find(user => user.email===form.email)
 
-                    const user = data.usuarios.find(user => user.email===form.email)
+                                if (user) {
+                                    if (!user.status) {
+                                        if ( user.password === form.password ) {
+                                            await setUserStatus(user.id, true)
+                                            return { status: true, message: 'Autenticado', user}
+                                        } else {
+                                            return { status: false, message: 'Senha inválida' }
+                                        }
+                                    } else {
+                                        return { status: true, message: 'Este usuário já está logado' }
+                                    }
+                                } else {
+                                    return { status: false, message: 'Usuário não encontrado' }
+                                }
 
-                    if (user) {
-                        if (!user.status) {
-                            if ( user.password === form.password ) {
-                                await setUserStatus(user.id, true)
-                                return { status: true, message: 'Autenticado', user}
-                            } else {
-                                return { status: false, message: 'Senha inválida' }
-                            }
                         } else {
-                            return { status: true, message: 'Este usuário já está logado' }
+                            return { status: false, message: 'Falha ao conectar ao servidor' }
                         }
-                         
-
-                    } else {
-                        return { status: false, message: 'Usuário não encontrado' }
+                    } catch(err) {
+                        return { status: false, message: 'Servidor indisponível ou erro de rede' }
                     }
-
-
-                } else {
-                    return { status: false, message: 'Falha ao conectar ao servidor' }
-                }
 
             } else {
                 return { status: false, message:'Formato do email ou senha inválidos' }
