@@ -1,13 +1,10 @@
 import './pedidos.css'
-import { useState } from 'react'
-import { formatedOrder, postOrder } from './functions.js';
+import { useState, useEffect } from 'react'
+import { formatedOrder, getMotoboysNames, postOrder } from './functions.js';
 import { produtos } from './catalogo-produtos.js';
 
 
 function PedidoForm({ onClose }) {
-
-    const motoboys = ['Gabriel', 'Guilherme', 'Vitor']
-
     // Estados para cada campo
     const [produto, setProduto] = useState('');
     const [quantidade, setQuantidade] = useState('');
@@ -15,6 +12,16 @@ function PedidoForm({ onClose }) {
     const [entregador, setEntregador] = useState('');
     const [pagamento, setPagamento] = useState('');
     const [preco, setPreco] = useState('');
+    const [motoboys, setMotoboys] = useState([])
+
+    async function handleSetMotoboys() {
+        const res = await getMotoboysNames()
+        setMotoboys(res)
+    }
+
+    useEffect(() => {
+        handleSetMotoboys();
+    }, []);
 
     async function handleSubmit(e) {
         e.preventDefault();

@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { produtos } from './catalogo-produtos';
-import { putOrder } from './functions';
+import { formateEditedOrder, getMotoboysNames, putOrder } from './functions';
 
 function EditPedidoForm( { pedido, onClose } ) {
     // Estados locais para os campos do formulário
@@ -9,8 +9,12 @@ function EditPedidoForm( { pedido, onClose } ) {
     const [cliente, setCliente] = useState('');
     const [entregador, setEntregador] = useState('');
     const [pagamento, setPagamento] = useState('');
+    const [motoboys, setMotoboys] = useState([]);
 
-    const motoboys = ['Gabriel', 'Guilherme', 'Vitor']
+    async function handleSetMotoboys() {
+        const res = await getMotoboysNames()
+        setMotoboys(res)
+    }
 
     useEffect(() => {
         if (pedido) {
@@ -18,9 +22,10 @@ function EditPedidoForm( { pedido, onClose } ) {
             setQuantidade(pedido.quantidade || '');
             setCliente(pedido.cliente || '');
             setEntregador(pedido.deliveryMan || '');
-            setPagamento(pedido.paymentForm)
+            setPagamento(pedido.paymentForm || '');
             
         }
+        handleSetMotoboys();
     }, [pedido]);
 
     async function handleSubmit(e) {

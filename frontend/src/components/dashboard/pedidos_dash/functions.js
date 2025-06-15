@@ -13,7 +13,7 @@ export async function getOrders() {
                 quantidade: order.quantidade, 
                 cliente: order.clientName, 
                 deliveryMan: order.deliveryMan, 
-                paymentForm:order.paymentoForm, 
+                paymentForm:order.paymentForm, 
                 price:order.price
             }
         })
@@ -34,7 +34,7 @@ export async function formatedOrder(order) {
         quantidade: Number(order.quantidade),
         clientName: order.cliente,
         deliveryMan: order.entregador,
-        paymentoForm: order.pagamento,
+        paymentForm: order.pagamento,
         price
     }
     console.log(pedidoFormatado)
@@ -130,4 +130,17 @@ export async function putOrder(order) {
         return { message: 'Erro ao atualizar o pedido', status: true }
     }
     
+}
+
+export async function getMotoboysNames() {
+    const response = await fetch('http://localhost:5000/motoboys')
+    if (response.ok) {
+        const data = await response.json()
+
+        const motoboyNames = data.map((motoboy) => motoboy.nome.trim().split(' ')[0])
+
+        return motoboyNames
+    } else {
+        return []
+    }
 }

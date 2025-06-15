@@ -15,7 +15,7 @@ function App() {
 
     //Após autenticação e setUser, ao fechar a janela esta função altera o status do user para false
     useEffect(() => {
-        if (isAuth && user.id) {
+        if (isAuth && (user.id || user._id)) {
             const handleUnload = () => {
                 // Não use await aqui, pois o navegador pode fechar antes da requisição terminar
                 setUserStatus(user.id, false)
@@ -23,7 +23,7 @@ function App() {
             window.addEventListener('beforeunload', handleUnload)
             return () => window.removeEventListener('beforeunload', handleUnload)
         }
-    }, [isAuth, user.id])
+    }, [isAuth, user.id, user._id])
 
     return (
         <BrowserRouter>

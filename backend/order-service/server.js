@@ -22,7 +22,7 @@ const orderSchema = new mongoose.Schema({
   quantidade: Number,
   clientName: String,
   deliveryMan: String,
-  paymentoForm: String,
+  paymentForm: String,
   price: String,
   status: { type: String, default: "pendente" },
   createdAt: { type: Date, default: Date.now },

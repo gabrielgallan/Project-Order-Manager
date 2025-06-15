@@ -22,7 +22,7 @@
   align-items: center;
 }
 
-.title::before,.title::after {
+/*.title::before,.title::after {
   position: absolute;
   content: "";
   height: 16px;
@@ -42,7 +42,7 @@
   width: 18px;
   height: 18px;
   animation: pulse 1s linear infinite;
-}
+}*/
 
 .response {
   text-align: left;
@@ -93,7 +93,12 @@
 
 .inputs_box input:valid ~ label, 
 .inputs_box input:focus ~ label {
-    opacity: 0%;
+    opacity: 0;
+}
+
+.inputs_box input:focus,
+.inputs_box input:valid {
+  border: 1px solid rgb(51, 12, 192);
 }
 
 .submit {
@@ -101,15 +106,16 @@
   outline: none;
   background-color: rgb(51, 12, 192);
   padding: 12px;
-  border-radius: 0px;
+  border-radius: 5px;
   color: rgb(255, 255, 255);
-  font-size: 12pt;
-  font-family: monospace;
+  font-size: 13pt;
+  font-family: 'Rubik';
   transition: all .2s ease;
 }
 
 .submit:hover {
-  box-shadow: 0 0 10px rgb(60, 47, 233);
+  box-shadow: 0 0 15px rgb(60, 47, 233);
+  transform: scale(1.01);
   background-color: rgb(60, 47, 233);
   cursor: pointer;
 }

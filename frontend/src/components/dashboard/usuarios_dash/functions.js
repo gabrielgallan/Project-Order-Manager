@@ -121,3 +121,79 @@ async function generateID() {
     
     return String(newID).padStart(2, '0');
 }
+
+export async function autenticateEditForm(form) {
+    const userPass = window.prompt(`Informe a senha de ${form.usuario.name} para editar:`)
+    let newEmail = null
+    let newPass = null
+    if ( userPass===form.usuario.password ) {
+        const emailSchema = z.string().email()
+        const passSchema = z.string().min(6)
+
+        try {
+            const email = emailSchema.safeParse(form.email)
+
+            if (email.success) {
+                if (email.data===form.usuario.email) {
+                    newEmail = email.data
+                } else {
+                    const users = await getUsers()
+                    const existEmail = users.find((user) => user.email===email.data)
+
+                    if (existEmail) {
+                        throw new Error('Email já cadastrado')
+                    } else {
+                        newEmail = email.data
+                    }
+ 
+                }
+                
+                const pass = passSchema.safeParse(form.newPassword)
+                if (pass.success) {
+                    const newPass = pass.data
+                    const editedForm = {
+                        name: `${form.firstname} ${form.lastname}`,
+                        email: newEmail,
+                        password: newPass
+                    }
+
+                    return { status: true, body: editedForm, userId:form.usuario.id}
+
+                } else {
+                    throw new Error('Formato de senha inválida')
+                }
+
+
+            } else {
+                throw new Error('Formato de email inválido')
+            }
+
+
+        } catch(err) {
+            return { message: err.message, status:false }
+        }
+
+
+    } else {
+        alert('Senha incorreta')
+        return { status: false, message: 'Senha incorreta' }
+    }
+}
+
+export async function putUser(form) {
+    const req = await autenticateEditForm(form)
+    if (req.status) {
+        const response = await fetch(`http://localhost:3002/usuarios/${req.userId}`, {
+         method: 'PUT',
+         headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(req.body)
+    })
+        return response.ok ?
+            { message:'Usuário alterado', status:true } :
+            { message:'Erro ao alterar usuário', status:false }
+    } else {
+        return req
+    }
+}
