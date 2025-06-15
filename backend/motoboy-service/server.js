@@ -42,7 +42,7 @@ app.post("/motoboys", async (req, res) => {
 app.get("/motoboys", async (req, res) => {
   try {
     const motoboys = await Motoboy.find();
-    res.send(motoboys);
+    res.send({ motoboys });
   } catch (error) {
     res.status(500).send({ error: "Erro ao buscar motoboys" });
   }

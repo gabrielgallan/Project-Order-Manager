@@ -1,8 +1,11 @@
+import './dashboard.css';
 import { Link, Routes, Route, NavLink } from "react-router-dom";
-import './dashboard.css'
+import { setUserStatus } from "../login-form/autenticar.js"
 import Pedidos from "./pedidos_dash/pedidos.jsx";
 import Usuarios from "./usuarios_dash/usuarios.jsx";
-import { setUserStatus } from "../login-form/autenticar.js"
+import Entregadores from './entregador_dash/entregadores.jsx';
+
+
 
 function Dashboard({setIsAuth, user}) {
     return (
@@ -30,8 +33,8 @@ function Dashboard({setIsAuth, user}) {
                         </div>
 
                         <div className="navoptions">
-                            <NavLink to="/dashboard/delivery" className={({ isActive }) => isActive ? "nav-active" : ""}>
-                            <img src="/icons/delivery.png" alt="" />Delivery
+                            <NavLink to="/dashboard/entregadores" className={({ isActive }) => isActive ? "nav-active" : ""}>
+                            <img src="/icons/delivery.png" alt="" />Entregadores
                             </NavLink>
                         </div>
 
@@ -56,10 +59,9 @@ function Dashboard({setIsAuth, user}) {
                     <Routes>
                         <Route path="pedidos" element={<Pedidos />} />
                         <Route path="usuarios" element={<Usuarios />} />
-                        <Route path="delivery" element={<Pedidos />} />
+                        <Route path="entregadores" element={<Entregadores />} />
                         
-                        {/* Rota padrão (opcional) */}
-                        <Route path="*" element={<div>DashBoard</div>} />
+                        <Route path="*" element={<Pedidos />} />
                     </Routes>
                 </div>
 

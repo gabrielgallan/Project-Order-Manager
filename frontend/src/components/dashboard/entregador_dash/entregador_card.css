@@ -1,0 +1,73 @@
+.card {
+    width: 600px;
+    height: 120px;
+    background-color: #ffffffd2;
+    border-radius: 10px;
+    display: flex;
+    box-sizing: border-box;
+    box-shadow: 5px 5px 7px rgba(0, 0, 0, 0.075),
+                -5px -5px 10px rgba(255, 255, 255, 0.418);
+                /*inset 5px 5px 5px rgba(0, 0, 0, 0.075),
+                inset -5px -5px 10px rgba(255, 255, 255, 0.39);*/
+    font-family: Arial;
+    font-size: 11pt;
+    color: #172941c4;
+}
+
+.profile-pic svg{
+    fill: #172941c4;
+    margin: 15px;
+}
+
+.infos {
+    display: flex;
+    width: 100%;
+    border: 0px solid rgb(0, 0, 0);
+    margin: 15px 0;
+}
+
+.text {
+    font-size: 10pt;
+    color: rgb(0, 0, 0);
+}
+
+.container_1, .container_2, .container_3 {
+    flex: 2;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+
+.container_menu {
+    display: flex;
+    flex-direction: column;
+    margin-right: 10px;
+    margin-top: 5px;
+
+    border: 0px solid black;
+}
+
+.container_menu svg {
+    fill: #000000e1;
+    cursor: pointer;
+}
+
+.mt_actions {
+    display: none;
+    flex-direction: column;
+    align-items: center;
+    gap: 3px;
+}
+
+.mt_actions svg {
+    transition: all .3s ease;
+}
+
+.mt_edit svg:hover {
+    fill: rgb(74, 59, 209);
+}
+
+.mt_delete svg:hover {
+    fill: rgb(212, 58, 58);
+}

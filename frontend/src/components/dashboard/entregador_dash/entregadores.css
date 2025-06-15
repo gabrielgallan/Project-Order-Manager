@@ -1,0 +1,40 @@
+.entregadores_container {
+    padding: 50px 70px;
+}
+
+h2#entregador {
+    display: flex;
+    gap: 6em;
+}
+
+.entregadores_container button.addMotoboy {
+    width: 40px;
+  height: 40px;
+  border-radius: 50px;
+  display: grid;
+  place-content: center;
+  background-color: rgb(51, 12, 192);
+  border: none;
+  box-shadow: 0px 0px 0px 4px rgba(118, 113, 136, 0.253);
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.sem_entregadores {
+    margin-top: 9%;
+    text-align: center;
+    color: #00000077;
+    font-family: 'Nunito';
+    font-size: 12pt;
+    font-style: italic;
+}
+
+.entregadores_list {
+    width: 630px;
+    max-height: 550px;    /* Defina a altura máxima desejada */
+    overflow-y: auto;     /* Habilita o scroll vertical */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;            /* Espaço entre os cards, opcional */
+    padding: 10px;   /* Espaço para a barra de rolagem, opcional */
+}

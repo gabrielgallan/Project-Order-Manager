@@ -137,7 +137,7 @@ export async function getMotoboysNames() {
     if (response.ok) {
         const data = await response.json()
 
-        const motoboyNames = data.map((motoboy) => motoboy.nome.trim().split(' ')[0])
+        const motoboyNames = data.motoboys.map((motoboy) => motoboy.nome.trim().split(' ')[0])
 
         return motoboyNames
     } else {

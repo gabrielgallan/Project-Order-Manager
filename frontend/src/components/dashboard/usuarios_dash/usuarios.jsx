@@ -1,8 +1,8 @@
 import './usuarios.css'
+import { useState, useEffect } from 'react';
 import { getUsers, deleteUser } from './functions';
 import UsuarioCard from './usuario_card';
 import UserForm from './usuario_form';
-import { useState, useEffect } from 'react';
 import EditUserForm from './edit_user_form';
 
 function Usuarios() {
@@ -43,7 +43,6 @@ function Usuarios() {
 
     //Abrir o formulário de edição
     async function handleEditUser(usuario) {
-        console.log(usuario)
         setShowEditForm(usuario)
         setShowUserForm(false)
     }
