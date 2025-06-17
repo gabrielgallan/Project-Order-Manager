@@ -35,6 +35,6 @@ h2#entregador {
     overflow-y: auto;     /* Habilita o scroll vertical */
     display: flex;
     flex-direction: column;
-    gap: 10px;            /* Espaço entre os cards, opcional */
+    gap: 15px;            /* Espaço entre os cards, opcional */
     padding: 10px;   /* Espaço para a barra de rolagem, opcional */
 }
